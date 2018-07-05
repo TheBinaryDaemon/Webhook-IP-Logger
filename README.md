@@ -4,7 +4,7 @@ This is a PHP IP logger I made that sends the IP's to a Discord webhook.
 -Grabs the IP then gets info about it after that it sends it to a webhook you have entered.  
 -Gets Geo Location & ISP aswell as the browser  
 -Filters out bots  
--ROBLOX Lua script for it (for exploits that have HttGet or ROBLOX Studio)  
+-ROBLOX Lua script for it (for exploits that have HttpGet or ROBLOX Studio)  
 -My site has a script incase you don't have a site  
 ![Showcase with bot filtering turned off](https://vgy.me/MiiQN2.png)
 # How to use without a website [SETTING UP SOON]
